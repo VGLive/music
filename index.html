@@ -57,20 +57,6 @@
         .logo i { font-size: 1.6rem; color: var(--primary); -webkit-text-fill-color: initial; background: none; }
         .header-right { display: flex; align-items: center; gap: 15px; }
 
-        .playlist-header-btn {
-            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-sub);
-            width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: all 0.2s ease; position: relative; font-size: 1.2rem;
-        }
-        .playlist-header-btn:hover { background: rgba(255,255,255,0.1); color: white; transform: translateY(-2px); }
-        .playlist-header-btn.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 0 15px rgba(0, 181, 151, 0.4); }
-
-        .playlist-count {
-            position: absolute; top: -2px; right: -2px; background: #ef4444; color: white; font-size: 0.65rem; font-weight: 700;
-            min-width: 16px; height: 16px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
-            padding: 0 4px; border: 2px solid var(--bg-main); display: none; 
-        }
-
         .lang-dropdown { position: relative; }
         .lang-btn {
             background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
@@ -134,9 +120,6 @@
         .card:hover .card-menu-btn { opacity: 1; }
         .card-menu-btn:hover { background: white; color: black; }
 
-        .playlist-remove-btn { position: absolute; top: 8px; right: 8px; background: rgba(239, 68, 68, 0.9); color: white; border: none; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.2s; cursor: pointer; z-index: 20; font-size: 1.2rem; box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4); }
-        .playlist-remove-btn:hover { background: #ef4444; transform: scale(1.1); }
-
         .context-menu { position: fixed; background: #2A2A2E; border-radius: 8px; padding: 5px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.8); z-index: 2000; display: none; width: 200px; border: 1px solid var(--border); }
         .context-menu.active { display: block; animation: fadeIn 0.1s ease; }
         .context-item { padding: 12px 15px; color: white; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 12px; }
@@ -180,7 +163,6 @@
         @media (max-width: 1023px) { .fp-content-wrapper { flex: 1; display: flex; flex-direction: column; height: 100%; } }
 
         .fp-header { padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); flex-shrink: 0; }
-        .fp-history-btn { background: none; border: none; color: var(--text-sub); font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 6px; }
         .fp-queue-title { font-weight: 600; color: white; letter-spacing: 0.5px; }
         .fp-close-btn { background: none; border: none; color: var(--text-sub); cursor: pointer; padding: 5px; font-size: 1.5rem; transition: 0.2s; }
         .fp-close-btn:hover { color: white; transform: rotate(90deg); }
@@ -192,25 +174,10 @@
         .fp-art-container { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; }
         .fp-art { width: 100%; max-width: 350px; aspect-ratio: 1; border-radius: 12px; box-shadow: 0 15px 50px rgba(0,0,0,0.4); object-fit: cover; }
 
-        .fp-video-container { display: none; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100%; }
-        
-        .fp-video-wrapper { width: 100%; max-width: 350px; aspect-ratio: 16/9; background: black; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,0.5); position: relative; display: flex; align-items: center; justify-content: center; }
-
-        .fp-iframe { width: 100%; height: 100%; border: none; position: absolute; top: 0; left: 0; z-index: 5; }
-
-        .video-loading { position: absolute; z-index: 2; color: var(--primary); animation: spin 1s linear infinite; }
-        .video-fallback { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.9); z-index: 10; text-align: center; padding: 20px; }
-        .video-fallback h3 { color: white; margin-bottom: 10px; font-size: 1.1rem; }
-        .video-fallback p { color: #ccc; font-size: 0.9rem; margin-bottom: 20px; line-height: 1.4; }
-
-        .btn-watch-yt { background: #ff0000; color: white; padding: 12px 24px; border-radius: 25px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: transform 0.2s; font-size: 1rem; }
-        .btn-watch-yt:hover { transform: scale(1.05); background: #cc0000; }
-
         @media (max-width: 767px) {
             .fp-body { display: flex; flex-direction: column; align-items: center; padding-bottom: 80px; gap: 15px; overflow-y: scroll; }
-            .fp-art-container, .fp-video-container { flex: 0 0 auto; margin-bottom: 5px; }
+            .fp-art-container { flex: 0 0 auto; margin-bottom: 5px; }
             .fp-art { max-width: 220px; } 
-            .fp-video-wrapper { max-width: 100%; }
             .fp-info-container { width: 100%; display: flex; flex-direction: column; align-items: center; padding: 0 10px; }
             .fp-song-title { font-size: 1.2rem; margin-bottom: 4px; text-align: center; line-height: 1.2; }
             .fp-artist-list { font-size: 0.9rem; margin-bottom: 12px; justify-content: center; }
@@ -253,9 +220,6 @@
         .fp-btn-ctrl i { font-size: 1.8rem; }
         @media (min-width: 768px) { .fp-btn-ctrl i { font-size: 2rem; } }
         
-        .btn-youtube { color: #ff0000 !important;  }
-        .btn-youtube.active { color: white !important; text-shadow: 0 0 10px #ff0000; }
-
         .fp-btn-play { width: 64px; height: 64px; background: var(--primary); color: white; border-radius: 50%; box-shadow: 0 0 20px rgba(0, 181, 151, 0.4); z-index: 60; position: relative; padding: 0; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
         .fp-btn-play:hover { transform: scale(1.05); background: var(--primary-dark); }
         .fp-btn-play i { font-size: 1.8rem; margin-left: 4px; } 
@@ -357,11 +321,6 @@
         .album-play-icon { color: var(--primary); font-size: 1.5rem; opacity: 0; transition: 0.2s; }
         .album-row:hover .album-play-icon { opacity: 1; }
 
-        .playlist-view-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-        .playlist-view-header h2 { color: white; }
-        .clear-playlist { color: var(--text-sub); font-size: 0.9rem; cursor: pointer; padding: 5px 10px; border: 1px solid var(--border); border-radius: 20px; }
-        .clear-playlist:hover { color: #ff4757; border-color: #ff4757; }
-
     </style>
 </head>
 <body>
@@ -374,10 +333,6 @@
             </div>
 
             <div class="header-right">
-                <div class="playlist-header-btn" id="playlistHeaderBtn" title="My Playlist">
-                    <i class="ri-play-list-add-line"></i>
-                    <span class="playlist-count" id="playlistCount">0</span>
-                </div>
 
                 <div class="lang-dropdown">
                     <div class="lang-btn" id="langBtn" onclick="toggleLangMenu()">
@@ -442,11 +397,7 @@
     <div class="full-player-overlay" id="fullPlayer">
         <div class="fp-content-wrapper">
             <div class="fp-header">
-                <button class="fp-history-btn" onclick="showToast('History feature coming soon')">
-                    <i class="ri-history-line"></i>
-                    <span>History</span>
-                </button>
-                <div class="fp-queue-title">Now Playing</div>
+                <div></div> <div class="fp-queue-title">Now Playing</div>
                 <button class="fp-close-btn" onclick="toggleFullPlayer(false)">
                     <i class="ri-close-line"></i>
                 </button>
@@ -455,20 +406,6 @@
             <div class="fp-body">
                 <div class="fp-art-container" id="fpArtContainer">
                     <img src="" class="fp-art" id="fpArtBig" alt="">
-                </div>
-
-                <div class="fp-video-container" id="fpVideoContainer">
-                    <div class="fp-video-wrapper">
-                        <i id="videoLoader" class="ri-loader-4-line video-loading" style="font-size: 2rem; display: none;"></i>
-                        <iframe id="ytPlayer" class="fp-iframe" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
-                        <div id="videoFallback" class="video-fallback hidden">
-                            <h3>Video Unavailable</h3>
-                            <p id="fallbackText">Could not load video automatically.</p>
-                            <a href="#" target="_blank" id="videoSearchLink" class="btn-watch-yt">
-                                <i class="ri-youtube-fill"></i> Search on YouTube
-                            </a>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="fp-info-container">
@@ -510,12 +447,6 @@
 
                     <div class="fp-actions">
                         <div class="fp-action-left">
-                            <button class="fp-btn-ctrl btn-youtube" id="btnYoutube" title="Watch Video" onclick="toggleVideoMode()">
-                                <i class="ri-youtube-fill" style="font-size: 1.8rem;"></i>
-                            </button>
-                            <button class="fp-btn-ctrl" title="Add to Playlist" id="addPlaylistBtn" onclick="toggleCurrentSongInPlaylist()">
-                                <i class="ri-play-list-add-line" style="font-size: 1.5rem;"></i>
-                            </button>
                             <button class="fp-btn-ctrl" title="Like" onclick="toggleLike(this)">
                                 <i class="ri-heart-line" style="font-size: 1.5rem;"></i>
                             </button>
@@ -583,14 +514,11 @@
         let isPlaying = false;
         let isShuffle = false;
         let isRepeat = false;
-        let isVideoMode = false;
         let lyricsData = []; 
         let lyricsType = 'none'; 
         let currentLyricsLang = 'all'; 
         let currentSongObj = null; 
         let originalPlainLyrics = ""; 
-        let myPlaylist = JSON.parse(localStorage.getItem('vt_music_playlist')) || [];
-        let isViewingPlaylist = false;
         let contextMenuTargetSong = null;
         let contextMenuSourceList = null;
 
@@ -622,13 +550,6 @@
         const queueListContainer = document.getElementById('queueListContainer');
         const fpQueueSection = document.getElementById('fpQueueSection');
         const fpArtContainer = document.getElementById('fpArtContainer');
-        const fpVideoContainer = document.getElementById('fpVideoContainer');
-        const ytPlayer = document.getElementById('ytPlayer');
-        const btnYoutube = document.getElementById('btnYoutube');
-        const videoFallback = document.getElementById('videoFallback');
-        const videoSearchLink = document.getElementById('videoSearchLink');
-        const fallbackText = document.getElementById('fallbackText');
-        const videoLoader = document.getElementById('videoLoader');
         const searchInput = document.getElementById('searchInput');
         const lyricsModal = document.getElementById('lyricsModal');
         const lyricsContent = document.getElementById('lyricsContent');
@@ -640,9 +561,6 @@
         const lyricsLangBtn = document.getElementById('lyricsLangBtn');
         const lyricsLangMenu = document.getElementById('lyricsLangMenu');
         const currentLyricsLangSpan = document.getElementById('currentLyricsLang');
-        const playlistHeaderBtn = document.getElementById('playlistHeaderBtn');
-        const playlistCount = document.getElementById('playlistCount');
-        const addPlaylistBtn = document.getElementById('addPlaylistBtn');
 
         document.addEventListener('DOMContentLoaded', () => {
             initLanguages();
@@ -650,22 +568,7 @@
             loadHome();
             setupEventListeners();
             setupSwipeGesture();
-            updatePlaylistCount();
-            updatePlaylistBtnState(); 
         });
-
-        const API_INSTANCES = [
-            { type: 'piped', url: 'https://pipedapi.kavin.rocks' },
-            { type: 'piped', url: 'https://piped-api.garudalinux.org' },
-            { type: 'piped', url: 'https://api.piped.io' },
-            { type: 'invidious', url: 'https://invidious.snopyta.org' },
-            { type: 'invidious', url: 'https://invidious.kavin.rocks' },
-            { type: 'invidious', url: 'https://inv.riverside.rocks' },
-            { type: 'invidious', url: 'https://yewtu.be' },
-            { type: 'invidious', url: 'https://invidious.nerdvpn.de' },
-            { type: 'invidious', url: 'https://invidious.fdn.fr' },
-            { type: 'invidious', url: 'https://vid.puffyan.us' }
-        ];
 
         const fetchWithTimeout = async (resource, options = {}, timeout = 3000) => {
             const controller = new AbortController();
@@ -675,150 +578,9 @@
             return response;
         };
 
-        async function getVideoId(query) {
-            const encodedQuery = encodeURIComponent(query);
-            for (const api of API_INSTANCES) {
-                try {
-                    let apiUrl = '', parser = null;
-                    if (api.type === 'piped') {
-                        apiUrl = `${api.url}/search?q=${encodedQuery}&filter=music_songs`;
-                        parser = (data) => {
-                            if (data.items && data.items.length > 0) {
-                                const match = data.items[0].url.match(/v=([^&]+)/);
-                                return match ? match[1] : null;
-                            }
-                            return null;
-                        };
-                    } else if (api.type === 'invidious') {
-                        apiUrl = `${api.url}/api/v1/search?q=${encodedQuery}`;
-                        parser = (data) => {
-                            if (Array.isArray(data) && data.length > 0) return data[0].videoId;
-                            return null;
-                        };
-                    }
-                    if (!parser) continue;
-                    const response = await fetchWithTimeout(apiUrl);
-                    if (!response.ok) continue;
-                    const data = await response.json();
-                    const videoId = parser(data);
-                    if (videoId) return videoId;
-                } catch (error) { continue; }
-            }
-            return null;
-        }
-
-        async function toggleVideoMode() {
-            if (!currentSongObj) return;
-            isVideoMode = !isVideoMode;
-            if (isVideoMode) {
-                fpArtContainer.style.display = 'none'; fpVideoContainer.style.display = 'flex';
-                btnYoutube.classList.add('active'); if(isPlaying) audio.pause();
-                videoLoader.style.display = 'block'; ytPlayer.src = ""; videoFallback.classList.add('hidden');
-                const query = `${currentSongObj.artist} ${currentSongObj.title} official video`;
-                const videoId = await getVideoId(query);
-                videoLoader.style.display = 'none';
-                if (videoId) { ytPlayer.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`; }
-                else {
-                    fallbackText.textContent = "All services busy. Searching YouTube...";
-                    videoSearchLink.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
-                    videoFallback.classList.remove('hidden');
-                }
-            } else {
-                fpArtContainer.style.display = 'flex'; fpVideoContainer.style.display = 'none';
-                btnYoutube.classList.remove('active'); ytPlayer.src = "";
-                if(isPlaying) audio.play();
-            }
-        }
-
         function toggleQueueMobile(e) {
             if(e) e.stopPropagation();
             fpQueueSection.classList.toggle('expanded');
-        }
-
-        function updatePlaylistCount() {
-            playlistCount.textContent = myPlaylist.length;
-            playlistCount.style.display = myPlaylist.length > 0 ? 'flex' : 'none';
-        }
-
-        function toggleCurrentSongInPlaylist() {
-            if (!currentSongObj) return;
-            const index = myPlaylist.findIndex(s => s.id === currentSongObj.id);
-            if (index === -1) {
-                myPlaylist.push(currentSongObj);
-                showToast("Added to Playlist");
-                addPlaylistBtn.style.color = 'var(--primary)';
-            } else {
-                myPlaylist.splice(index, 1);
-                showToast("Removed from Playlist");
-                addPlaylistBtn.style.color = ''; 
-            }
-            localStorage.setItem('vt_music_playlist', JSON.stringify(myPlaylist));
-            updatePlaylistCount();
-            updatePlaylistBtnState();
-            if (isViewingPlaylist) renderMyPlaylist();
-        }
-
-        function updatePlaylistBtnState() {
-            if (!currentSongObj) return;
-            const isSaved = myPlaylist.some(s => s.id === currentSongObj.id);
-            addPlaylistBtn.style.color = isSaved ? 'var(--primary)' : '';
-        }
-
-        window.removeFromMyPlaylist = function(id, event) {
-            if (event) event.stopPropagation(); 
-            myPlaylist = myPlaylist.filter(s => s.id !== id);
-            localStorage.setItem('vt_music_playlist', JSON.stringify(myPlaylist));
-            updatePlaylistCount();
-            if (currentSongObj && currentSongObj.id === id) updatePlaylistBtnState();
-            renderMyPlaylist();
-            showToast("Removed from Playlist");
-        }
-
-        playlistHeaderBtn.addEventListener('click', () => {
-            isViewingPlaylist = !isViewingPlaylist;
-            if (isViewingPlaylist) {
-                playlistHeaderBtn.classList.add('active');
-                renderMyPlaylist();
-            } else {
-                playlistHeaderBtn.classList.remove('active');
-                loadHome();
-            }
-        });
-
-        function renderMyPlaylist() {
-            if (myPlaylist.length === 0) {
-                mainContent.innerHTML = `
-                    <div class="playlist-view-header">
-                        <h2>My Playlist</h2>
-                    </div>
-                    <div style="text-align:center; padding: 60px 20px; color: var(--text-sub);">
-                        <i class="ri-play-list-add-line" style="font-size: 3rem; margin-bottom: 20px; display:block; opacity:0.5;"></i>
-                        <p>Your playlist is empty.</p>
-                    </div>
-                `;
-                return;
-            }
-            let html = `
-                <div class="playlist-view-header">
-                    <h2>My Playlist (${myPlaylist.length})</h2>
-                    <div class="clear-playlist" onclick="clearMyPlaylist()">Clear All</div>
-                </div>
-                <div class="scroll-container" id="myPlaylistGrid" style="overflow-x: hidden; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));"></div>
-            `;
-            mainContent.innerHTML = html;
-            const container = document.getElementById('myPlaylistGrid');
-            renderCards(myPlaylist, container, 'song', true);
-        }
-
-        function clearMyPlaylist() {
-            if(confirm("Clear entire playlist?")) {
-                myPlaylist = [];
-                localStorage.setItem('vt_music_playlist', JSON.stringify(myPlaylist));
-                updatePlaylistCount();
-                renderMyPlaylist();
-                updatePlaylistBtnState();
-                showToast("Playlist Cleared");
-            }
         }
 
         function handleSectionClick(type, query) {
@@ -912,8 +674,6 @@
         }
 
         async function loadHome() {
-            isViewingPlaylist = false;
-            playlistHeaderBtn.classList.remove('active');
             mainContent.innerHTML = '<div style="text-align:center; padding:50px;"><div class="spinner"></div></div>';
             const currentYear = new Date().getFullYear();
             let sections = [
@@ -956,16 +716,14 @@
             }
         }
 
-        function renderCards(items, container, type = 'song', isPlaylistView = false) {
+        function renderCards(items, container, type = 'song') {
             if (!items || items.length === 0) { container.innerHTML = '<div style="color:#666; font-size:0.9rem; padding:10px;">No results.</div>'; return; }
             container.innerHTML = '';
             items.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'card';
                 const subtitle = type === 'album' ? (item.artist + (item.songCount ? ` • ${item.songCount} Songs` : '')) : item.artist;
-                let extraButtons = isPlaylistView 
-                    ? `<button class="playlist-remove-btn" onclick="removeFromMyPlaylist('${item.id}', event)"><i class="ri-close-line"></i></button>`
-                    : `<button class="card-menu-btn" onclick="openContextMenu(event, '${type}')"><i class="ri-more-2-fill"></i></button>`;
+                let extraButtons = `<button class="card-menu-btn" onclick="openContextMenu(event, '${type}')"><i class="ri-more-2-fill"></i></button>`;
 
                 card.innerHTML = `
                     <div class="card-img-wrapper"><img src="${item.image}" class="card-img" loading="lazy" alt="${item.title}">${extraButtons}<div class="play-overlay"><div class="play-btn"><i class="ri-play-fill"></i></div></div></div>
@@ -975,7 +733,7 @@
                 card.dataset.list = JSON.stringify(items);
                 card.dataset.type = type;
                 card.onclick = (e) => {
-                    if(!e.target.closest('.card-menu-btn') && !e.target.closest('.playlist-remove-btn')) {
+                    if(!e.target.closest('.card-menu-btn')) {
                         if (type === 'album') { showToast("Loading Album..."); loadAlbumById(item.id); }
                         else { playSong(item, items); }
                     }
@@ -1054,12 +812,10 @@
         }
 
         function playSong(song, playlist) {
-            if(isVideoMode) toggleVideoMode();
             currentPlaylist = playlist;
             currentIndex = playlist.findIndex(s => s.id === song.id);
             if (currentIndex === -1) currentIndex = 0;
             currentSongObj = song;
-            updatePlaylistBtnState();
             updatePlayerUI(song);
             if (song.url) {
                 audio.src = song.url;
